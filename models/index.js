@@ -3,9 +3,15 @@ const Course = require('./Course');
 const Sub_course = require('./Sub_course');
 const Like = require('./Like');
 const Comment = require('./Comment');
+const Status = require('./Status');
+const User_course = require('./User_course');
 
 // create associations
 Course.hasMany(Sub_course, {
+  foreignKey: 'course_id'
+})
+
+Sub_course.belongsTo(Course, {
   foreignKey: 'course_id'
 });
 
@@ -52,7 +58,6 @@ Sub_course.hasMany(Comment, {
 Comment.belongsTo(Sub_course, {
   foreignKey: 'sub_course_id'
 });
-
 
 
 
