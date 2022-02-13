@@ -1,10 +1,11 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
+class Sub_course extends Model {}
 
-class Like extends Model {}
+//create fields/columns for Course model
 
-Like.init(
+Sub_course.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -12,36 +13,32 @@ Like.init(
       primaryKey: true,
       autoIncrement: true
     },
-  
-    user_id: {
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    section_url: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      validate: {
+        isURL: true
+      }
+    },
+    course_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'user',
+        model: 'course',
         key: 'id'
       }
-    },
-
-    sub_course_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'sub_course',
-        key: 'id'
-      }
-    },
-     status: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: null,
-    },
+    }
   },
   {
     sequelize,
-    timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'like'
+    modelName: 'sub_course'
   }
 );
 
-module.exports = Like;
+module.exports = Sub_course;
