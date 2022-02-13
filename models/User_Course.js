@@ -3,7 +3,7 @@ const sequelize = require("../config/connection");
 
 class User_course extends Model {}
 
-//create fields/columns for Course model
+//create fields/columns for User_course model
 
 User_course.init(
   {
@@ -20,31 +20,8 @@ User_course.init(
         model: "course",
         key: "id",
       },
-    },
-    sub_course_id: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-      references: {
-        model: "sub_course",
-        key: "id",
-      },
-    },
-    user_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: "user",
-        key: "id",
-      },
-    },
-    status_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: "status",
-        key: "id",
-      },
-    },
+    }
+   
   },
   {
     sequelize,
