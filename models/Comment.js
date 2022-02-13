@@ -41,7 +41,7 @@ Comment.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'sub_course'
+    modelName: 'comment'
   }
 );
 
