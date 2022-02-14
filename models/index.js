@@ -1,6 +1,5 @@
 const User = require('./User');
 const Course = require('./Course');
-const Status = require('./Status'); 
 //has the course_id as foreign_key
 const Sub_course = require('./Sub_course'); 
 //has user_id and sub_course_id as foreign_key + status_column
@@ -44,13 +43,6 @@ User_course.belongsToMany(Sub_course, {
   foreignKey: 'user_course_id'
 });
 
-Status.hasMany(User_sub_course, {
-  foreignKey: 'status_id'
-})
-
-User_sub_course.belongsTo(Status, {
-  foreignKey: 'status_id'
-});
 
 User.belongsToMany(Sub_course, {
   through: Like,
@@ -110,6 +102,4 @@ Comment.belongsTo(Sub_course, {
 });
 
 
-
-
-module.exports = { User, Course, Sub_course, Like, Comment, Status, User_course, User_sub_course }
+module.exports = { User, Course, Sub_course, Like, Comment, User_course, User_sub_course }

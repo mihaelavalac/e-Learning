@@ -29,13 +29,9 @@ User_sub_course.init(
         key: "id",
       },
     },
-    status_id: {
-      type: DataTypes.INTEGER,
+    status: {
+      type: DataTypes.STRING,
       allowNull: false,
-      references: {
-        model: "status",
-        key: "id",
-      },
     },
   },
   {
