@@ -1,10 +1,6 @@
+const sequelize = require("../../config/connection");
 const router = require("express").Router();
-const {
-  Course,
-  Sub_course,
-  Like,
-  Comment
-} = require("../../models");
+const { Course, Sub_course, Like, Comment } = require("../../models");
 
 //ROUTES FOR/courses
 // get all course
@@ -125,12 +121,13 @@ router.post("/sub_courses/like", (req, res) => {
         "id",
         "title",
         "section_url",
-        "course_id"[
+        "course_id",
+        [
           // use raw MySQL aggregate function query to get a count of how many votes the post has and return it under the name `vote_count`
-          (sequelize.literal(
-            "(SELECT COUNT(*) FROM like WHERE sub_course.id = like.sub_course_id AND like.status = true)"
+          sequelize.literal(
+            "(SELECT COUNT(*) FROM like WHERE sub_course.id = like.sub_course_id)"
           ),
-          "like_count")
+          "like_count",
         ],
       ],
     })
