@@ -24,7 +24,6 @@ Like.init(
 
     sub_course_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
       references: {
         model: 'sub_course',
         key: 'id'
