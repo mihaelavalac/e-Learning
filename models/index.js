@@ -81,6 +81,10 @@ Sub_course.hasMany(Comment, {
 });
 Comment.belongsTo(Sub_course);
 
+User.hasMany(Course, {
+  foreignKey: 'user_id'
+});
+Course.belongsTo(User);
 
 
 
