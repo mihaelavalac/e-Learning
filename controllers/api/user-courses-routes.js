@@ -9,6 +9,8 @@ router.get("/", (req, res) => {
   User_course.findAll({
   
     attributes: ['id', 'user_id', 'course_id'],
+    order: [['created_at', 'DESC']],
+
   })
     .then((dbUserData) => res.json(dbUserData))
     .catch((err) => {

@@ -1,6 +1,6 @@
 const sequelize = require("../../config/connection");
 const router = require("express").Router();
-const { Sub_course, Course } = require("../../models");
+const { Sub_course, Course, Comment, Like } = require("../../models");
 
 /* ************  ROUTES FOR SUB_COURSES ************** */
 //FIND ALL SUB_COURSES FROM A COURSE
@@ -48,7 +48,16 @@ router.get("/course/:id", (req, res) => {
       //   ),
       //   "like_count",
       // ],
-    ],
+    ],include: [
+      {
+        model: Course,
+        attributes: ['title']
+      },
+      {
+        model: Comment,
+        attributes: ['comment_text', 'user_id', 'sub_course_id', 'created_at']
+      }
+    ]
   })
     .then((dbPostData) => {
       if (!dbPostData) {
@@ -128,6 +137,5 @@ router.delete("/:id", (req, res) => {
       res.status(500).json(err);
     });
 });
-
 
 module.exports = router;
