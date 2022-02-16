@@ -44,20 +44,31 @@ router.get("/course/:id", (req, res) => {
       "course_id",
       // [
       //   sequelize.literal(
-      //     "(SELECT COUNT(*) FROM like WHERE sub_course.id = like.sub_course_id)"
+      //     `(SELECT COUNT(*) FROM like AS likes WHERE likes.sub_course_id = sub_course.id AND likes.status = true)`
       //   ),
-      //   "like_count",
+      //   'like_count'
       // ],
-    ],include: [
+      // [
+      //   sequelize.literal(
+      //     `(SELECT COUNT(*) FROM like AS unlikes WHERE unlikes.sub_course_id = sub_course.id AND lunikes.status = false)`
+      //   ),
+      //   'unlike_count',
+      // ],
+    ],
+    include: [
       {
         model: Course,
-        attributes: ['title']
+        attributes: ["title"],
       },
       {
         model: Comment,
-        attributes: ['comment_text', 'user_id', 'sub_course_id', 'created_at']
-      }
-    ]
+        attributes: ["comment_text", "user_id", "sub_course_id", "created_at"],
+      },
+      {
+        model: Like,
+        attributes: ["user_id", "status"],
+      },
+    ],
   })
     .then((dbPostData) => {
       if (!dbPostData) {
@@ -116,7 +127,6 @@ router.post("/", (req, res) => {
       res.status(500).json(err);
     });
 });
-
 
 //DELETE ONE SUB_COURSE
 router.delete("/:id", (req, res) => {

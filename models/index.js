@@ -30,6 +30,16 @@ User.belongsToMany(Course, {
   foreignKey: 'user_id'
 });
 
+User.hasMany(User_course, {
+  foreignKey: 'user_id'
+});
+User_course.belongsTo(User);
+
+Course.hasMany(User_course, {
+  foreignKey: 'course_id'
+});
+User_course.belongsTo(Course);
+
 Sub_course.belongsToMany(User_course, {
   through: User_sub_course,
   foreignKey: 'sub_course_id'
@@ -40,24 +50,24 @@ User_course.belongsToMany(Sub_course, {
   foreignKey: 'user_course_id'
 });
 
-
-User.belongsToMany(Sub_course, {
-  through: Like,
-  foreignKey: 'user_id'
-});
-
-Sub_course.belongsToMany(User, {
-  through: Like,
+Sub_course.hasMany(User_sub_course, {
   foreignKey: 'sub_course_id'
 });
+User_sub_course.belongsTo(Sub_course);
+
+User_course.hasMany(User_sub_course, {
+  foreignKey: 'user_course_id'
+});
+User_sub_course.belongsTo(User_course);
+
 
 User.belongsToMany(Sub_course, {
-  through: Comment,
+  through: Like,
   foreignKey: 'user_id'
 });
 
 Sub_course.belongsToMany(User, {
-  through: Comment,
+  through: Like,
   foreignKey: 'sub_course_id'
 });
 
@@ -71,6 +81,18 @@ Sub_course.hasMany(Like, {
 });
 Like.belongsTo(Sub_course);
 
+
+
+User.belongsToMany(Sub_course, {
+  through: Comment,
+  foreignKey: 'user_id'
+});
+
+Sub_course.belongsToMany(User, {
+  through: Comment,
+  foreignKey: 'sub_course_id'
+});
+
 User.hasMany(Comment, {
   foreignKey: 'user_id'
 });
@@ -80,6 +102,14 @@ Sub_course.hasMany(Comment, {
   foreignKey: 'sub_course_id'
 });
 Comment.belongsTo(Sub_course);
+
+
+
+
+
+
+
+
 
 User.hasMany(Course, {
   foreignKey: 'user_id'

@@ -1,6 +1,6 @@
 const sequelize = require("../../config/connection");
 const router = require("express").Router();
-const { Comment } = require("../../models");
+const { Comment, Sub_course } = require("../../models");
 
 /* ************  ROUTES FOR COMMENT ************** */
 //FIND ALL COMMENTS
@@ -36,6 +36,16 @@ router.get("/sub_course/:id", (req, res) => {
       sub_course_id: req.params.id,
     },
     attributes: ["id", "comment_text", "sub_course_id", "user_id"],
+    include: [
+      {
+        model: User,
+        attributes: ["first_name", "last_name"],
+      },
+      {
+        model: Sub_course,
+        attributes: ["title", "section_url"],
+      },
+    ],
   })
     .then((dbPostData) => {
       if (!dbPostData) {
@@ -57,6 +67,16 @@ router.get("/:id", (req, res) => {
       id: req.params.id,
     },
     attributes: ["id", "comment_text", "sub_course_id", "user_id"],
+    include: [
+      {
+        model: User,
+        attributes: ["first_name", "last_name"],
+      },
+      {
+        model: Sub_course,
+        attributes: ["title", "section_url"],
+      },
+    ],
   })
     .then((dbPostData) => {
       if (!dbPostData) {
@@ -85,8 +105,6 @@ router.post("/", (req, res) => {
     });
 });
 
-
-
 //DELETE ONE COMMENT
 router.delete("/:id", (req, res) => {
   Comment.destroy({
@@ -108,6 +126,5 @@ router.delete("/:id", (req, res) => {
       res.status(500).json(err);
     });
 });
-
 
 module.exports = router;
