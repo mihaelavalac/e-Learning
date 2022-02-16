@@ -20,6 +20,10 @@ Course.init(
     description: {
       type: DataTypes.TEXT,
       allowNull: false
+    },
+    img_name: {
+      type: DataTypes.TEXT,
+      allowNull: false
     }
   },
   {
