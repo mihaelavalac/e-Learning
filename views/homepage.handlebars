@@ -1,0 +1,14 @@
+<ol class="post-list">
+  {{#each courses as |course| }}
+  <li>
+    <article class="post">
+      <div class="title">
+        <h2>{{course.title}}</h2>
+      </div>
+      <div class="meta">
+        <p>{{course.description}}</p>
+      </div>
+    </article>
+  </li>
+  {{/each}}
+</ol>

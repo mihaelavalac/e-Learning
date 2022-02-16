@@ -5,6 +5,35 @@ const {  Sub_course, Like } = require("../../models");
 /*  *********** ROUTES FOR LIKE  ************ */
 //FIND ALL LIKES
 //FIND ONE LIKE BY ID
+router.get("/:id", (req, res) => {
+  Like.findOne({
+    where: {
+      id: req.params.id,
+    },
+    attributes: ["id", "user_id", "sub_course_id", "status"],
+    include: [
+      {
+        model: User,
+        attributes: ["first_name", "last_name"],
+      },
+      {
+        model: Sub_course,
+        attributes: ["title", "section_url"],
+      },
+    ],
+  })
+    .then((dbPostData) => {
+      if (!dbPostData) {
+        res.status(404).json({ message: "No comment found with this id" });
+        return;
+      }
+      res.json(dbPostData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
 //CREATE ONE LIKE TO A SUB_COURSE
 router.post("/", (req, res) => {
