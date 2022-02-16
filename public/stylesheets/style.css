@@ -1,3 +1,4 @@
+
 img{
   height:200px;
   width:100%;
@@ -59,6 +60,234 @@ img{
 .card:hover::before, .card:hover::after, .card:focus::before, .card:focus::after {
   transform: scale3d(1, 1, 1);
 }
+
+
+
+
+
+
+a {
+
+  text-decoration: none;
+  /* color: #225ca3; */
+  font-weight: bold;
+  transition: color .1s;
+  color: #fffaa0;;
+}
+a:hover {
+  text-decoration: none;
+  color: red;;
+}
+
+.log {
+  background-color: #fffaa0;
+  color: #333;
+  font-weight: bold;
+  transition: background-color .1s;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.log:hover {
+  background-color: #fffaa0;
+  color: #333;
+}
+
+button {
+  background-color: #333;
+  border: 0;
+  padding: 1%;
+  color: white;
+  font-weight: bold;
+  transition: background-color .1s;
+  transition: all .2s ease-in-out;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  transform: scale(1.1); 
+}
+.comment-link {
+  color: #333 !important;
+}
+.comment-link:hover {
+  transform: scale(1.1); 
+}
+
+
+.grow {
+  transition: all .2s ease-in-out;
+}
+
+.grow:hover {
+  transform: scale(1.1); 
+}
+
+.post-list {
+  margin: 0;
+  padding: 0;
+}
+
+textarea, input {
+  padding: .5%;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+textarea:focus, input:focus {
+  outline: none;
+  border: 2px solid #333;
+}
+
+textarea {
+  min-width: 100%;
+  min-height: 100px;
+}
+.login-form {
+  margin-top: 15%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 500px;
+  color:#fffaa0;
+  background-color: #333;
+  border-radius: 2%;
+  padding: 20px;
+}
+
+
+.signup-form {
+  margin-top: 15%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 500px;
+  color:#fffaa0;
+  background-color: #333;
+  border-radius: 2%;
+  padding: 20px;
+}
+
+.submit-login {
+  background-color: #fffaa0;
+  color:#333;
+}
+
+form > div {
+  margin-bottom: 2%;
+}
+
+form label {
+  display: block;
+}
+
+/* .wrapper {
+  width: 100%;
+  min-height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+} */
+
+/* header {
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1%;
+} */
+
+header h1 {
+  font-size: 1em;
+}
+
+main {
+  flex: 1;
+  padding: 2% 4%;
+}
+
+.btn-no-style {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: none;
+  color: #fffaa0;;
+  font-size: 100%;
+  font-weight: bold;
+  transition: color .1s;
+  margin-left: 16px;
+}
+
+.btn-no-style:hover {
+  background: none;
+  color: #fffaa0;;
+}
+
+.delete-post-btn {
+  background-color: #d41414;
+}
+
+.delete-post-btn:hover {
+  background-color: #ff643d;
+}
+
+.post {
+  margin-bottom: 2%;
+  line-height: 150%;
+}
+
+.post .title {
+  color: #fffaa0;
+}
+
+.post .post-body {
+  font-style: italic;
+  font-size: 16px;
+  color: #333;
+  background-color: #fffaa0;
+  padding: 10px;
+}
+
+
+.edit-link {
+  display: block;
+  margin: -1.5% 0 2% 0;
+}
+
+.like-btn {
+  background-color: #197d0f;
+  transition: background-color .1s;
+}
+
+.like-btn:hover {
+  background-color: #1f9c13;
+}
+
+.comment-form {
+  margin-bottom: 5%;
+}
+
+.comment {
+  padding: 1%;
+  margin-bottom: 1%;
+}
+
+.comment {
+  background-color: #333;
+  color: #fffaa0;
+}
+
+
+
+.new-post-form input {
+  width: 100%;
+}
+
+.edit-post-form {
+  margin-bottom: 5%;
+}
+
 footer {
   position: fixed;
   height: 50px;
@@ -89,3 +318,4 @@ footer {
   list-style: none;
   color:#333;
 }
+
