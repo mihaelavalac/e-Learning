@@ -1,0 +1,50 @@
+<div class="jumbotron p-4">
+  <div class="row">
+    <div class="col-6"> <img src="https://www.imgacademy.com/sites/default/files/2009-stadium-about.jpg" alt=""></div>
+    <div class="col-6">
+      <h1 class="display-4">{{course.title}}</h1>
+      <p class="lead">{{sub_course.section_url}}</p>
+      <hr class="my-4" />
+      <p class="lead">
+        <a class="btn btn-primary btn-lg" href="#" role="button">Add to Your
+          Course</a>
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<div class="container">
+  <h2 class="text-center">Course Sections</h2>
+  <div class="row">
+    {{#each sub_courses as |sub_course|}}
+    <div id={{sub_course.id}}
+        class="col-lg-4 col-md-3 col-sm-6 item d-flex justify-content-center"
+      >
+        <a href="{{sub_course.section_url}}" target ="_blank" class='course-link'>
+          <div class="card item-card card-block">
+            <img
+              src="https://static.pexels.com/photos/7357/startup-photos.jpg"
+              alt="Photo of sunset"
+            />
+            <h4 class="card-title">{{sub_course.title}}</h4>
+            <p class="card-text">{{sub_course.section_url}}</p>
+            
+            <div class = "row">
+              <div class="col-5 text-center">
+              <a href="#" class="btn btn-danger">Go somewhere</a>
+              </div>
+              <div class="col-5 text-center">
+              <a href="#" class="btn btn-danger">Go somewhere</a>
+                </div>
+              </div>
+            
+
+          </div>
+          </a>
+
+      </div>
+          {{/each}}
+
+  </div>
+</div>

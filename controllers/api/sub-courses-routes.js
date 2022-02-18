@@ -58,7 +58,7 @@ router.get("/course/:id", (req, res) => {
     include: [
       {
         model: Course,
-        attributes: ["title"],
+        attributes: ["title", "description", "name"],
       },
       {
         model: Comment,
