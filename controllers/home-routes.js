@@ -35,54 +35,22 @@ router.get("/signup", (req, res) => {
 });
 
 router.get("/course/:id", (req, res) => {
-  Course.findOne({
+  Sub_course.findAll({
     where: {
-      id: req.params.id,
+      course_id: req.params.id,
     },
-    attributes: ["id", "title", "description"],
+    attributes: ["id", "title", "section_url"],
   })
-    .then((()=>{
-      Sub_course.findAll({
-        where: {
-          course_id: req.params.id
-        },
-        attributes: [
-          "id",
-          "title",
-          "section_url",
-          "course_id",
-        ],
-        include: [
-          {
-            model: Course,
-            attributes: ["title"],
-          },
-          {
-            model: Comment,
-            attributes: ["comment_text", "user_id", "sub_course_id", "created_at"],
-          },
-          {
-            model: Like,
-            attributes: ["user_id", "status"],
-          },
-        ],
-      })
-    })
-    .then((dbSubCourseData) => {
-      if (!dbSubCourseData) {
-        res.status(404).json({ message: "No subCourses found with this course_id" });
-        return;
-      }
-      const sub_course = dbPostData.get({ plain: true });
-      res.render("single-course", { sub_course });
-    }))
-    .then((dbPostData) => {
-      if (!dbPostData) {
+    .then((dbCourseData) => {
+
+      if (!dbCourseData) {
         res.status(404).json({ message: "No course found with this id" });
         return;
       }
-      const course = dbPostData.get({ plain: true });
-      res.render("single-course", { course });
+      const sub_courses = dbCourseData.map((course) => course.get({ plain: true }));
+
+      res.render("single-course", { sub_courses });
+
     })
     .catch((err) => {
       console.log(err);
